@@ -21,6 +21,7 @@ local MRX_Library = {
         Accent = Color3.fromRGB(200, 0, 50),     -- Death God Crimson
         AccentHover = Color3.fromRGB(255, 30, 80),
         Glow = Color3.fromRGB(150, 0, 30),
+        Rounding = 6,
         Success = Color3.fromRGB(0, 255, 100),
         Warning = Color3.fromRGB(255, 150, 0),
         Error = Color3.fromRGB(255, 0, 50),
@@ -28,7 +29,6 @@ local MRX_Library = {
     Settings = {
         Font = Enum.Font.GothamBold,
         TextSize = 14,
-        Rounding = 6,
         ToggleKey = Enum.KeyCode.RightControl
     },
     Connections = {},
