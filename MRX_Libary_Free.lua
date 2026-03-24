@@ -94,12 +94,12 @@ MRX_ScreenGui.IgnoreGuiInset = true
 
 if syn and syn.protect_gui then
     syn.protect_gui(MRX_ScreenGui)
-    MRX_ScreenGui.Parent = CoreGui
-elseif gethui then
     MRX_ScreenGui.Parent = gethui()
 else
     MRX_ScreenGui.Parent = CoreGui
 end
+
+MRX_Library.ScreenGui = MRX_ScreenGui
 
 -- [ Utility Functions ] ----------------------------------------------------------------------------------------------------------------------------------
 local Utility = {}
@@ -677,11 +677,7 @@ function MRX_Library:CreateWindow(options)
         Parent = MainFrame
     })
 
-    UserInputService.InputBegan:Connect(function(input)
-        if input.KeyCode == MRX_Library.Settings.ToggleKey then
-            MRX_ScreenGui.Enabled = not MRX_ScreenGui.Enabled
-        end
-    end)
+-- Removed built-in toggle to use main script handler
 
     local WindowObj = {}
     local CurrentTab = nil
