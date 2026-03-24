@@ -1380,11 +1380,16 @@ function MRX_Library:CreateWindow(options)
                                 KeyLabel.Text = input.KeyCode.Name
                             end
                             KeyLabel.TextColor3 = MRX_Library.Theme.TextMuted
+                            Utility:Tween(KeyBg, {BackgroundColor3 = MRX_Library.Theme.Background}, 0.2)
                             binding = false
+                            -- Передаём новый KeyCode в callback (замена клавиши)
                             task.spawn(Callback, MRX_Library.Flags[Flag])
                         end
-                    elseif input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == MRX_Library.Flags[Flag] and MRX_Library.Flags[Flag] ~= Enum.KeyCode.Unknown then
-                        task.spawn(Callback, true) -- Fire as pressed
+                    elseif input.UserInputType == Enum.UserInputType.Keyboard
+                        and input.KeyCode == MRX_Library.Flags[Flag]
+                        and MRX_Library.Flags[Flag] ~= Enum.KeyCode.Unknown then
+                        -- Передаём тот же KeyCode — теперь тип всегда EnumItem, без парадоксов
+                        task.spawn(Callback, input.KeyCode)
                     end
                 end)
             end
